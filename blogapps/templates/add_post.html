@@ -7,12 +7,12 @@
 <div class="mx-5 mt-3 bg-success">
     <p class="text-center pt-4 fw-light fs-2">Form</p>
     <div class="row p-3">
-        <form action="" method="POST" class="p-4 col-5">
+        <form action="" method="POST" class="p-4 col-lg-5 col-sm-12">
             {% csrf_token %}
             {{post_form.as_p}}
             <input type="submit" class="btn btn-light" value="Submit">
         </form>
-        <div class="col-7 p-5">
+        <div class="col-lg-7 col-sm-12 p-5">
             <img src="https://indigo.amsterdam/wp-content/uploads/2017/05/python-django-logo-1024x576.jpg" alt="django" width="100%" height="100%">
         </div>
         
