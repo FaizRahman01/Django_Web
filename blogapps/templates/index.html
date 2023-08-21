@@ -1,0 +1,23 @@
+{% extends 'main.html' %}
+
+{% block title %}Django Blog{% endblock title %}
+
+{% block navbar %}
+<a href="/post/create" class="btn btn-outline-light">✏️</a>
+{% endblock navbar %}
+
+
+
+{% block content %}
+{% for post in post_data %}
+<div class="card mx-4 my-2">
+    <div class="card-header">
+        @{{post.username}}
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">{{post.title}}</h5>
+        <a href="/post/view/{{post.id}}" class="btn btn-dark">See More</a>
+    </div>
+</div>
+{% endfor %}
+{% endblock content %}

@@ -1,0 +1,23 @@
+{% extends 'main.html' %}
+
+{% block title %}Post{% endblock title %}
+
+{% block navbar %}
+<a href="{% url 'createpost' %}" class="btn btn-outline-light">✏️</a>
+{% endblock navbar %}
+
+
+
+{% block content %}
+<div class="card mx-5 mt-3">
+  <div class="card-header">
+    {{post_data.title}}
+  </div>
+  <div class="card-body">
+    <blockquote class="blockquote mb-0">
+      <p>{{post_data.desc}}</p>
+      <footer class="blockquote-footer">@{{post_data.username}}</footer>
+    </blockquote>
+  </div>
+</div>
+{% endblock content %}
