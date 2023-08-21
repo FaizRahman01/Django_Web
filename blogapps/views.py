@@ -10,7 +10,12 @@ def index(request):
 
 def show_post(request, post_id):
     post_data = UserPost.objects.get(id=post_id)
-    return render(request, 'post.html', {'post_data': post_data})
+    if request.method == 'POST':
+        post_data.delete()
+        return redirect('blog')
+    else:
+        return render(request, 'post.html', {'post_data': post_data})
+    
 
 def create_post(request):
     post_form = UserPostForm()
