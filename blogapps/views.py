@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from blogapps.models import UserPost
 from .forms import UserPostForm
@@ -14,5 +14,13 @@ def show_post(request, post_id):
 
 def create_post(request):
     post_form = UserPostForm()
+    if request.method == 'POST':
+        post_form = UserPostForm(request.POST)
+        if post_form.is_valid():
+            post_form.save()
+            return redirect('blog')
+        else:
+            return HttpResponse("Error")
+
     dict_form = {'post_form': post_form}
     return render(request, 'add_post.html', dict_form)
