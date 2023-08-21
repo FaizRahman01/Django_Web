@@ -25,7 +25,21 @@ def create_post(request):
             post_form.save()
             return redirect('blog')
         else:
-            return HttpResponse("Error")
+            return HttpResponse("Error Create Post")
+
+    dict_form = {'post_form': post_form}
+    return render(request, 'add_post.html', dict_form)
+
+def edit_post(request, post_id):
+    post_data = UserPost.objects.get(id=post_id)
+    post_form = UserPostForm(instance=post_data)
+    if request.method == 'POST':
+        post_form = UserPostForm(request.POST, instance=post_data)
+        if post_form.is_valid():
+            post_form.save()
+            return redirect('blog')
+        else:
+            return HttpResponse("Error Update Post")
 
     dict_form = {'post_form': post_form}
     return render(request, 'add_post.html', dict_form)
