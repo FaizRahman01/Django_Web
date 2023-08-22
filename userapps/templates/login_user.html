@@ -2,6 +2,26 @@
 
 {% block title %}Login Blog{% endblock title %}
 
+{% block navbar %}test
+<p>test</p>
+{% endblock navbar %}
+
 {% block content %}
-<h1>Login</h1>
+<form action="" method="post" class="d-flex justify-content-center">
+    {% csrf_token %}
+    <div class="w-50">
+        <div class="input-group mb-3">
+            <span class="input-group-text">@</span>
+            <input type="text" name="username" class="form-control" placeholder="username">
+        </div>
+        <br />
+        <div class="input-group mb-3">
+            <span class="input-group-text">*</span>
+            <input type="password" name="password" class="form-control" placeholder="password">
+        </div>
+        <br />
+        <input type="submit" value="Login" class="btn btn-outline-secondary w-100">
+    </div>
+
+</form>
 {% endblock content %}
