@@ -1,8 +1,8 @@
-a:first-child{
+.web-name{
     border-bottom:solid rgb(43, 88, 0) 2px ;
     color: rgb(123, 255, 0) !important;
 }
 
-a:first-child:hover{
+.web-name:hover{
     color: white !important;
 }
