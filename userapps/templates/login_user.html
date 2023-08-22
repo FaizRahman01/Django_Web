@@ -5,8 +5,10 @@
 
 {% block content %}
 <form action="" method="post" class="d-flex justify-content-center">
+    
     {% csrf_token %}
-    <div class="w-50">
+    <div class="w-50 mt-5">
+        <p class="fw-light fs-5 text-center">Login</p>
         <div class="input-group mb-3">
             <span class="input-group-text">@</span>
             <input type="text" name="username" class="form-control" placeholder="username">
