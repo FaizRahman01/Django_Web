@@ -24,6 +24,10 @@ def user_login(request):
 
     return render(request, 'login_user.html')
 
+def user_logout(request):
+    logout(request)
+    return redirect('login')
+
 def user_home(request):
     return render(request, 'home_user.html')
 
