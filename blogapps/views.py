@@ -12,8 +12,11 @@ def index(request):
 def show_post(request, post_id):
     post_data = UserPost.objects.get(id=post_id)
     if request.method == 'POST':
-        post_data.delete()
-        return redirect('blog')
+        if request.user.is_authenticated:
+            post_data.delete()
+            return redirect('blog')
+        else:
+            return redirect('login')
     else:
         return render(request, 'post.html', {'post_data': post_data})
     
