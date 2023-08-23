@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from blogapps.models import UserPost
 from .forms import UserPostForm
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def index(request):
@@ -17,6 +18,7 @@ def show_post(request, post_id):
         return render(request, 'post.html', {'post_data': post_data})
     
 
+@login_required(login_url='login')
 def create_post(request):
     post_form = UserPostForm()
     if request.method == 'POST':
@@ -30,6 +32,7 @@ def create_post(request):
     dict_form = {'post_form': post_form}
     return render(request, 'add_post.html', dict_form)
 
+@login_required(login_url='login')
 def edit_post(request, post_id):
     post_data = UserPost.objects.get(id=post_id)
     post_form = UserPostForm(instance=post_data)
