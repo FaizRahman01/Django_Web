@@ -4,11 +4,62 @@
 
 
 {% block content %}
-<form action="" method="post" class="d-flex justify-content-center">
-    
+
+{% if page == 'register' %}
+
+<form action="{% url 'register' %}" method="post" class="d-flex justify-content-center">
+
+    {% csrf_token %}
+    <div class="w-50 mt-5">
+        <p class="fw-light fs-5 text-center">Create New Account</p>
+
+        {% if messages %}
+            {% for message in messages %}
+                
+            <div class="alert alert-{% if message.tags == 'error' %}danger{% else %}warning{% endif %} alert-dismissible fade show" role="alert">
+                
+                {{ message }} ({{ message.tags }})
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            {% endfor %}
+        {% endif %}
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon1">{{form.username.label}}</span>
+            {{form.username}}
+        </div>
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon1">{{form.password1.label}}</span>
+            {{form.password1}}
+        </div>
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon1">{{form.password2.label}}</span>
+            {{form.password2}}
+        </div>
+        <input type="submit" value="Register" class="btn btn-outline-secondary w-100">
+    </div>
+
+</form>
+
+{% else %}
+
+<form action="{% url 'login' %}" method="post" class="d-flex justify-content-center">
+
     {% csrf_token %}
     <div class="w-50 mt-5">
         <p class="fw-light fs-5 text-center">Login</p>
+
+        {% if messages %}
+            {% for message in messages %}
+                
+            <div class="alert alert-{% if message.tags == 'error' %}danger{% else %}warning{% endif %} alert-dismissible fade show" role="alert">
+                
+                {{ message }} ({{ message.tags }})
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            {% endfor %}
+        {% endif %}
+        
+
         <div class="input-group mb-3">
             <span class="input-group-text">@</span>
             <input type="text" name="username" class="form-control" placeholder="username">
@@ -20,7 +71,9 @@
         </div>
         <br />
         <input type="submit" value="Login" class="btn btn-outline-secondary w-100">
+        <p class="text-center mt-3">No Account? <a href="{% url 'register' %}">Register Now</a></p>
     </div>
 
 </form>
+{% endif %}
 {% endblock content %}

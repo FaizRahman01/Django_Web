@@ -3,5 +3,7 @@
 {% block title %}Home{% endblock title %}
 
 {% block content %}
-<p>home user</p>
+<p class="text-center">
+    Welcome {% if user.is_authenticated %}{{user.username}}{% endif %}
+</p>
 {% endblock content %}
