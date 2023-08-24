@@ -2,6 +2,10 @@
 
 {% block title %}Home{% endblock title %}
 
+{% block navbar %}
+<a href="{% url 'createpost' %}" class="btn btn-outline-light">✏️</a>
+{% endblock navbar %}
+
 {% block content %}
 <p class="text-center">
     Welcome {% if user.is_authenticated %}{{user.username}}{% endif %}
