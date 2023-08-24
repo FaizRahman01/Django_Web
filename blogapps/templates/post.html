@@ -13,7 +13,7 @@
   <div class="card-header">
     <div class="row">
       <p class="col">{{post_data.title}}</p>
-      {% if user.username ==  post_data.username %}
+      {% if username ==  post_data.username %}
       <div class="col d-flex justify-content-end">
         <a href="{% url 'editpost' post_data.id %}" class="btn btn-outline-secondary mx-2">Update</a>
         <form action="" method="POST">

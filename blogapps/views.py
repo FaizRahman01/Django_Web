@@ -18,7 +18,8 @@ def show_post(request, post_id):
         else:
             return redirect('login')
     else:
-        return render(request, 'post.html', {'post_data': post_data})
+        context = {'post_data': post_data, 'username': request.user}
+        return render(request, 'post.html', context)
     
 
 @login_required(login_url='login')
