@@ -12,7 +12,7 @@
 {% for post in post_data %}
 <div class="card mx-4 my-2">
     <div class="card-header">
-        @{{post.username}}
+        @{{post.user.username}}
     </div>
     <div class="card-body">
         <h5 class="card-title">{{post.title}}</h5>

@@ -18,7 +18,7 @@ def show_post(request, post_id):
         else:
             return redirect('login')
     else:
-        context = {'post_data': post_data, 'username': request.user}
+        context = {'post_data': post_data}
         return render(request, 'post.html', context)
     
 
