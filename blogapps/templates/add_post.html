@@ -10,7 +10,7 @@
         <form action="" method="POST" class="p-4 col-lg-5 col-sm-12">
             {% csrf_token %}
             {% comment %} //generate form in one line {{post_form.as_div}} {% endcomment %}
-            <input type="hidden" name="username" id="id_username" value="{% if user.is_authenticated %}{{user.id}}{% endif %}">
+            <input type="hidden" name="user" id="id_user" value="{% if user.is_authenticated %}{{user.id}}{% endif %}">
             <div class="input-group mb-3">
                 <span class="input-group-text" id="basic-addon1">{{post_form.title.label}}</span>
                 {{post_form.title}}
