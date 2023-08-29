@@ -13,3 +13,8 @@ class PostSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserPost
         fields = '__all__'
+
+class ManagePostSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = UserPost
+        fields = '__all__'
