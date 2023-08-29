@@ -29,7 +29,7 @@ def get_posts(request):
             serializer.save()
             return Response({'status':status.HTTP_201_CREATED, "created" : serializer.data}, status=status.HTTP_201_CREATED)
         else:
-            return Response({'status':status.HTTP_400_BAD_REQUEST}, status=status.HTTP_400_BAD_REQUEST)
+            return Response({'status':status.HTTP_400_BAD_REQUEST, "created" : serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
     
 
 @api_view(['GET', 'PUT', 'DELETE'])
@@ -51,8 +51,8 @@ def get_post(request, pk):
             serializer.save()
             return Response({'status':status.HTTP_200_OK, "updated" : serializer.data}, status=status.HTTP_200_OK)
         else:
-            return Response({'status':status.HTTP_400_BAD_REQUEST}, status=status.HTTP_400_BAD_REQUEST)
+            return Response({'status':status.HTTP_400_BAD_REQUEST, "updated" : serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
     elif request.method == 'DELETE':
         post.delete()
-        return Response({'status':status.HTTP_204_NO_CONTENT}, status=status.HTTP_204_NO_CONTENT)
+        return Response({'status':status.HTTP_204_NO_CONTENT, "deleted" : "deleted"}, status=status.HTTP_204_NO_CONTENT)
     
